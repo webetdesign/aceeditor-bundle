@@ -1,28 +1,50 @@
 {
-    "name": "norberttech/aceeditor-bundle",
+    "name": "webetdesign/aceeditor-bundle",
     "type": "symfony-bundle",
     "description": "Bundle that integrate excellent JavaScript ace editor into Symfony Form.",
     "keywords": ["ace", "code", "editor", "symfony", "form", "bundle", "javascript"],
     "license": "MIT",
     "require": {
-        "php": ">=5.6",
-        "twig/twig": "^1.34|^2.0",
-        "symfony/framework-bundle": "^3.0|^4.0",
-        "symfony/form": "^3.0|^4.0",
-        "symfony/twig-bridge": "^3.0|^4.0",
-        "symfony/asset": "^3.0|^4.0",
-        "symfony/expression-language": "^3.0|^4.0"
+        "php": ">=7.3",
+        "twig/twig": "^1.34|^2.0|^3.0",
+        "symfony/framework-bundle": "^3.0|^4.0|^5.0|^6.0",
+        "symfony/form": "^3.0|^4.0|^5.0|^6.0",
+        "symfony/twig-bridge": "^3.0|^4.0|^5.0|^6.0",
+        "symfony/asset": "^3.0|^4.0|^5.0|^6.0",
+        "symfony/expression-language": "^3.0|^4.0|^5.0|^6.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.5|^7.0",
-        "satooshi/php-coveralls": "^1.0"
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpunit/phpunit": "^9.2"
     },
     "autoload": {
-        "psr-4": { "Norzechowicz\\AceEditorBundle\\": "" }
+        "psr-4": { "Norzechowicz\\AceEditorBundle\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Norzechowicz\\AceEditorBundle\\Tests\\": "tests/"
+        }
     },
     "extra": {
         "branch-alias": {
             "dev-master": "5.0-dev"
         }
+    },
+    "scripts" : {
+        "build": [
+            "@static:analyze",
+            "@test"
+        ],
+        "test": [
+            "phpunit"
+        ],
+        "static:analyze": [
+            "php-cs-fixer fix --dry-run"
+        ],
+        "cs:php:fix": "php-cs-fixer fix"
     }
 }
