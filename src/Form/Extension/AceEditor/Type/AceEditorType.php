@@ -20,7 +20,7 @@ final class AceEditorType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         // Remove id from ace editor wrapper attributes. Id must be generated.
         $wrapperAttrNormalizer = function (Options $options, $aceAttr) {
